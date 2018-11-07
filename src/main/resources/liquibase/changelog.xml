@@ -7,6 +7,27 @@
     http://www.liquibase.org/xml/ns/dbchangelog-ext
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    
+
+  <changeSet id="createTableBook" author="dom">
+    <createTable tableName="book">
+      <column name="title" type="varchar"></column>
+    </createTable>
+  </changeSet>  
+  
+  <changeSet id="extendTableBook" author="dom">
+    <addColumn tableName="book">
+      <column name="id" type="int"></column>
+      <column name="author" type="varchar"></column>
+      <column name="isbn" type="varchar"></column>
+    </addColumn>
+    <addAutoIncrement tableName="book" columnName="id" columnDataType="serial"/>
+    <addPrimaryKey tableName="book" columnNames="id" />
+  </changeSet>
+  
+  <changeSet id="createBooks" author="dom">
+    <sql>
+      INSERT INTO book (title, author, isbn) VALUES ('Spring Boot 2', 'Simons', '42');
+    </sql>
+  </changeSet>
              
 </databaseChangeLog>

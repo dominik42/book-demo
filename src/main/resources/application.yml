@@ -1,3 +1,4 @@
+#debug: true
 server:
   port: 8080
 
@@ -6,10 +7,25 @@ spring:
     console:
       enabled: true
       path: /h2
+  datasource:
+    url: jdbc:h2:~/test3
+    username: sa
+    password: 
+  jpa:
+    hibernate:
+      ddl-auto: none
       
 liquibase:
   enabled: true
   change-log: classpath:liquibase/changelog.xml
+  drop-first: true
+  url: jdbc:h2:~/test3
+  user: sa
+  password: 
+  
+logging:
+  level:
+    liquibase: debug
 ---
 
 spring:

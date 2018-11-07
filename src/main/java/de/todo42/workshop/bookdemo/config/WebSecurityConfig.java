@@ -21,20 +21,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.headers().frameOptions().disable();
     }
     
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication()
-//                .withUser("user")
-//                    .password("password")
-//                    .roles("USER")
-//            .and()
-//                .withUser("manager")
-//                    .password("password")
-//                    .credentialsExpired(true)
-//                    .accountExpired(true)
-//                    .accountLocked(true)
-//                    .authorities("WRITE_PRIVILEGES", "READ_PRIVILEGES")
-//                    .roles("MANAGER");
-//    }
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+                .withUser("user")
+                    .password("password")
+                    .roles("USER")
+            .and()
+                .withUser("manager")
+                    .password("password")
+                    .credentialsExpired(true)
+                    .accountExpired(true)
+                    .accountLocked(true)
+                    .authorities("WRITE_PRIVILEGES", "READ_PRIVILEGES")
+                    .roles("MANAGER");
+    }
     
 }
